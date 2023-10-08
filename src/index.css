@@ -9,6 +9,10 @@
   border: 1px solid black;
 }
 
+.a {
+  cursor: pointer;
+}
+
 .logo {
   width: 5rem;
   border-radius: 50%;
@@ -45,6 +49,11 @@
 .res-card:hover {
   border: 1px solid black;
   cursor: pointer;
+}
+
+.restaurant-card-link {
+  text-decoration: none;
+  color: inherit;
 }
 
 .res-logo {
