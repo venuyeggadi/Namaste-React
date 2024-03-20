@@ -8,27 +8,27 @@ export default Header = () => {
   const onlineStatus = useOnlineStatus();
 
   return (
-    <div className="header">
+    <div className="header flex justify-between bg-pink-100 shadow-lg">
       <div className="logo-container">
-        <img className="logo" src={Logo}></img>
+        <img className="logo w-28" src={Logo}></img>
         Food Delivery App
       </div>
-      <div className="nav-items">
-        <ul>
-          <li>Online Status: {onlineStatus ? "✅" : "🔴"}</li>
-          <li>
+      <div className="nav-items items-center">
+        <ul className="flex p-4 m-4">
+          <li className="p-4">Online Status: {onlineStatus ? "✅" : "🔴"}</li>
+          <li className="p-4">
             <Link to="/">Home</Link>
           </li>
-          <li>
+          <li className="p-4">
             <Link to="/about">About Us</Link>
           </li>
-          <li>
+          <li className="p-4">
             <Link to="/contact">Contact Us</Link>
           </li>
-          <li>
+          <li className="p-4">
             <Link to="/grocery">Grocery</Link>
           </li>
-          <li>Cart</li>
+          <li className="p-4">Cart</li>
           <button
             className="login-btn"
             onClick={() => setIsLoggedIn(!isLoggedIn)}

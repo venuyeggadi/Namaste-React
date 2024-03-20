@@ -37,7 +37,8 @@ export default Body = () => {
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setRestaurantsToShow(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants ?? []
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants ?? []
     );
   };
 
@@ -50,34 +51,39 @@ export default Body = () => {
       </h1>
     );
 
-  return restaurantsToShow.length === 0 ? (
-    <Shimmer />
-  ) : (
+  return (
     <div className="body">
       <div className="filter">
-        <div className="search">
+        <div className="search m-4 p-4">
           <input
-            className="search-bar"
+            className="search-bar border border-solid border-black"
             type="text"
             placeholder="Search"
             onChange={(e) => handleSearch(e.target.value)}
           />
-        </div>
-        <button className="filter-btn" onClick={handleFilter}>
-          Top Rated Restaurants
-        </button>
-      </div>
-      <div className="res-container">
-        {restaurantsToShow.map((restaurant) => (
-          <Link
-            className="restaurant-card-link"
-            key={restaurant.info.id}
-            to={"restaurants/" + restaurant.info.id}
+          <button
+            className="filter-btn px-4 py-1 mx-5 bg-gray-100 rounded-lg"
+            onClick={handleFilter}
           >
-            <RestaurantCard restaurant={restaurant} />
-          </Link>
-        ))}
+            Top Rated Restaurants
+          </button>
+        </div>
       </div>
+      {restaurantsToShow.length === 0 ? (
+        <Shimmer />
+      ) : (
+        <div className="res-container flex flex-wrap">
+          {restaurantsToShow.map((restaurant) => (
+            <Link
+              className="restaurant-card-link"
+              key={restaurant.info.id}
+              to={"restaurants/" + restaurant.info.id}
+            >
+              <RestaurantCard restaurant={restaurant} />
+            </Link>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
