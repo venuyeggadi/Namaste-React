@@ -3,6 +3,7 @@ import Logo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 export default Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -10,6 +11,10 @@ export default Header = () => {
 
   const { loggedInUser } = useContext(UserContext);
   console.log(loggedInUser);
+
+  // Subscribing to the store using a Selector
+  const cartItems = useSelector((store) => store.cart.items);
+  console.log(cartItems);
 
   return (
     <div className="header flex justify-between bg-pink-100 shadow-lg">
@@ -32,14 +37,16 @@ export default Header = () => {
           <li className="p-4">
             <Link to="/grocery">Grocery</Link>
           </li>
-          <li className="p-4">Cart</li>
+          <li className="p-4 font-bold text-xl">
+            <Link to="/cart">Cart - ({cartItems.length} items)</Link>
+          </li>
           <button
-            className="login-btn"
+            className="login-btn p-4"
             onClick={() => setIsLoggedIn(!isLoggedIn)}
           >
             {isLoggedIn ? "Logout" : "Login"}
           </button>
-          <li className="px-4 font-bold">{loggedInUser}</li>
+          <li className="p-4">{loggedInUser}</li>
         </ul>
       </div>
     </div>
