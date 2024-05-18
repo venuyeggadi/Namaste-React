@@ -1,8 +1,9 @@
-import RestaurantCard from "./RestaurantCard";
-import { useEffect, useState } from "react";
+import RestaurantCard, { withPromtedLabel } from "./RestaurantCard";
+import { useState, useEffect, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 export default Body = () => {
   const [restaurants, setRestaurants] = useState([]);
@@ -50,6 +51,9 @@ export default Body = () => {
         Looks like you're offline!! Please check your internet connection;
       </h1>
     );
+  
+  const RestaurantCardPromoted = withPromtedLabel(RestaurantCard);
+  const { loggedInUser, setUserName } = useContext(UserContext);
 
   return (
     <div className="body">
@@ -68,6 +72,14 @@ export default Body = () => {
             Top Rated Restaurants
           </button>
         </div>
+        <div className="search m-4 p-4 flex items-center">
+          <label>UserName : </label>
+          <input
+            className="border border-black p-2"
+            value={loggedInUser}
+            onChange={(e) => setUserName(e.target.value)}
+          />
+        </div>
       </div>
       {restaurantsToShow.length === 0 ? (
         <Shimmer />
@@ -79,7 +91,11 @@ export default Body = () => {
               key={restaurant.info.id}
               to={"restaurants/" + restaurant.info.id}
             >
-              <RestaurantCard restaurant={restaurant} />
+              {restaurant.info.promoted ? (
+                <RestaurantCardPromoted restaurant={restaurant} />
+              ) : (
+                <RestaurantCard restaurant={restaurant} />
+              )}
             </Link>
           ))}
         </div>

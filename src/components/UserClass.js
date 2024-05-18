@@ -44,7 +44,7 @@ class UserClass extends React.Component {
     console.log("Child Render");
 
     return (
-      <div className="user-card">
+      <div className="user-card  m-4 p-4 bg-gray-50 rounded-lg">
         <h3>Count1 = {count1}</h3>
         <h3>Count2 = {count2}</h3>
         <button
@@ -59,7 +59,7 @@ class UserClass extends React.Component {
         </button>
         <h1>Name: {name}</h1>
         <h2>Location: {location}</h2>
-        <img src={avatar_url}></img>
+        <img className="w-24" src={avatar_url}></img>
         <h3>Contact: None</h3>
       </div>
     );
