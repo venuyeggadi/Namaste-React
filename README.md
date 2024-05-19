@@ -1,5 +1,7 @@
 # Namaste React 🚀
 
+## This project is live [here](https://namaste-react-8c778.web.app/)
+
 # Parcel
 - Dev Build
 - Local Server
