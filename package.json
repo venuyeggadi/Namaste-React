@@ -16,7 +16,6 @@
   "bugs": {
     "url": "https://github.com/venuyeggadi/Namaste-React/issues"
   },
-  "homepage": "https://github.com/venuyeggadi/Namaste-React#readme",
   "devDependencies": {
     "parcel": "^2.9.3",
     "postcss": "^8.4.36",
